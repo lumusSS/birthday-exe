@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#080d16">
+  <meta name="description" content="BIRTHDAY.EXE — особое системное сообщение">
+  <title>BIRTHDAY.EXE — System Notification</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="scanlines" aria-hidden="true"></div>
+  <header class="topbar"><span class="brand">BIRTHDAY<span class="accent">.EXE</span></span><span class="system-badge">● SYSTEM ONLINE</span></header>
+  <main>
+    <section class="screen active" id="start">
+      <div class="panel terminal">
+        <p class="eyebrow">/ SYSTEM BOOT /</p>
+        <h1>Инициализация<br><span class="accent">протокола BIRTHDAY</span></h1>
+        <div id="boot-lines" class="console" aria-live="polite"></div>
+        <div class="progress"><div id="boot-progress"></div></div>
+        <p class="notice" id="boot-status">Подключение к базе данных...</p>
+        <button id="scan-start" class="btn hidden">НАЧАТЬ СКАНИРОВАНИЕ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="scan">
+      <div class="panel">
+        <p class="eyebrow">/ SUBJECT IDENTIFICATION /</p>
+        <h2>ОБЪЕКТ <span class="accent">ОБНАРУЖЕН ✓</span></h2>
+        <div class="photo scan-photo"><img src="photos/sonnaya.jpg" alt="Сонная фотография именинника" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">😴<small>Добавь фото<br>photos/sonnaya.jpg</small></div><span class="scan-beam"></span></div>
+        <div class="data-grid"><span>ИМЯ</span><strong data-name>Игорь</strong><span>СТАТУС</span><strong>ЛИДЕР / ONLINE</strong><span>РЕЖИМ РАБОТЫ</span><strong>24/7</strong><span>УРОВЕНЬ ЗАДУМЧИВОСТИ</span><strong>CRITICAL</strong></div>
+        <div class="console compact"><p>&gt; Повышенная концентрация мыслей обнаружена.</p><p>&gt; Возможные причины: служение, люди, задачи...</p><p>&gt; Система подозревает: пользователь думает о служении даже во сне. 😂</p></div>
+        <button class="btn next" data-next="stats">ПРОДОЛЖИТЬ АНАЛИЗ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="stats">
+      <div class="panel">
+        <p class="eyebrow">/ PERSONALITY SCAN 2.0 /</p>
+        <h2>ПРОВЕРКА <span class="accent">ХАРАКТЕРИСТИК</span></h2>
+        <div class="photo small"><img src="photos/shlyapa.jpg" alt="Именинник в шляпе" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">🎩<small>photos/shlyapa.jpg</small></div></div>
+        <p class="notice">Шляпа обнаружена. Авторитет повышен на 200%. 🎩</p>
+        <div class="stats-list" id="stats-list">
+          <div class="stat"><div><span>Ответственность</span><b>100%</b></div><div class="meter"><i style="--value:100%"></i></div></div>
+          <div class="stat"><div><span>Терпение</span><b>98%</b></div><div class="meter"><i style="--value:98%"></i></div></div>
+          <div class="stat"><div><span>Мудрость</span><b>95%</b></div><div class="meter"><i style="--value:95%"></i></div></div>
+          <div class="stat"><div><span>Чувство юмора</span><b>окружающие смеются, иногда даже добровольно</b></div><div class="meter"><i style="--value:100%"></i></div></div>
+          <div class="stat text-stat"><span>Количество задач</span><b>∞</b></div>
+          <div class="stat text-stat"><span>Свободное время</span><b>ERROR 404</b></div>
+          <div class="stat text-stat"><span>Божья благодать</span><b>UNLIMITED</b></div>
+        </div>
+        <p class="notice">Результат: редкий экземпляр лидера. Рекомендуется перезагрузка в виде отдыха.</p>
+        <button class="btn next" data-next="error">ЗАВЕРШИТЬ ДИАГНОСТИКУ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="error">
+      <div class="panel error-panel">
+        <p class="eyebrow red">/ CRITICAL SYSTEM ERROR /</p>
+        <div class="warning">!</div>
+        <h2>CRITICAL <span class="red">ERROR!</span></h2>
+        <div class="console compact"><p>ERROR CODE: BIRTHDAY_001</p><p>Обнаружено незавершённое событие: ДЕНЬ РОЖДЕНИЯ</p><p>Поздравление не отправлено: ✗</p><p>Дальнейшая работа системы невозможна.</p></div>
+        <button class="btn danger next" data-next="message">УСТРАНИТЬ ОШИБКУ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="message">
+      <div class="panel gold-panel">
+        <p class="eyebrow gold">/ PERSONAL_MESSAGE.TXT /</p>
+        <div class="photo medium"><img src="photos/krasivaya.jpg" alt="Красивая фотография именинника" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">✨<small>photos/krasivaya.jpg</small></div></div>
+        <h2 class="gold">С ДНЁМ РОЖДЕНИЯ!</h2>
+        <div id="typed-message" class="letter" aria-live="off"></div>
+        <button class="btn gold-btn hidden next" id="message-next" data-next="holiday">ДАЛЕЕ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="holiday">
+      <div class="panel">
+        <p class="eyebrow">/ SYSTEM UPDATE /</p>
+        <h2>ТРЕБУЕТСЯ <span class="accent">ПЕРЕЗАГРУЗКА</span></h2>
+        <p>Уровень ответственности: 100%. Свободное время: 0%.</p>
+        <h3>Выберите место восстановления ресурсов пользователя:</h3>
+        <div class="choices">
+          <button class="choice" data-choice="beach"><div class="photo choice-photo"><img src="photos/plyazh.jpg" alt="Фотография на пляже" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">🏝️<small>photos/plyazh.jpg</small></div></div><span>🏖️ ПЛЯЖ</span><small>Режим «Не беспокоить»</small></button>
+          <button class="choice" data-choice="tekeli"><div class="photo choice-photo"><img src="photos/tekeli.jpg" alt="Смешная фотография для Текели" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">⛰️<small>photos/tekeli.jpg</small></div></div><span>⛰️ ТЕКЕЛИ</span><small>Это точно отпуск?</small></button>
+        </div>
+        <div id="holiday-result" class="result hidden" aria-live="polite"></div>
+        <button class="btn hidden next" id="holiday-next" data-next="final">ПРОДОЛЖИТЬ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="final">
+      <div class="panel gold-panel">
+        <p class="eyebrow gold">/ FINAL SYSTEM CHECK /</p>
+        <div class="console compact"><p>&gt; Анализ жизненного пути... ✓</p><p>&gt; Анализ вклада в людей... ✓</p><p>&gt; Обнаружен параметр, не поддающийся вычислению.</p></div>
+        <h2 class="final-title">Ценность человека <span class="gold">не измеряется алгоритмами.</span></h2>
+        <p class="final-copy">И никакая система не сможет подсчитать, сколько добра может принести одна жизнь, посвящённая Богу.</p>
+        <div class="team-gallery"><div class="photo"><img src="photos/komanda1.jpg" alt="Командная фотография 1" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">👥<small>komanda1.jpg</small></div></div><div class="photo"><img src="photos/komanda2.jpg" alt="Командная фотография 2" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">👥<small>komanda2.jpg</small></div></div><div class="photo"><img src="photos/komanda3.jpg" alt="Командная фотография 3" onerror="this.parentElement.classList.add('missing')"><div class="photo-fallback">👥<small>komanda3.jpg</small></div></div></div>
+        <p class="final-copy">Спасибо за наставничество, посвящение и пример. Пусть Господь укрепляет, даёт мудрость и открывает новые глубины познания Его!</p>
+        <h2 class="gold">С ДНЁМ РОЖДЕНИЯ! 🎉</h2>
+        <button class="btn gold-btn next" data-next="credits">ЗАВЕРШИТЬ ПРОГРАММУ →</button>
+      </div>
+    </section>
+
+    <section class="screen" id="credits">
+      <div class="panel terminal center">
+        <p class="eyebrow">/ DEVELOPER SIGNATURE FOUND /</p>
+        <h2>MADE WITH <span class="accent">♥ & JAVASCRIPT</span></h2>
+        <p>Разработано специально для одного особенного пользователя.</p>
+        <p class="developer">© <span id="year"></span> <span data-developer>Polina.dev</span></p>
+        <p class="notice">All rights reserved. Especially birthday wishes.</p>
+        <button class="btn" id="about-dev">ОБ АВТОРЕ ПРОЕКТА →</button>
+        <div id="dev-details" class="console compact hidden"><p>POSITION: Birthday Software Engineer:)</p><p>Специализация: ПедАГоГ ЙоМаЙо</p><p>Стоимость разработки: 0 ₸</p><p>Оплата: одна искренняя улыбка :)</p><p>PROJECT STATUS: COMPLETED ✓</p></div>
+        <button class="btn secondary" id="restart">НАЧАТЬ СНАЧАЛА ↻</button>
+      </div>
+    </section>
+  </main>
+  <footer>PRIVATE BIRTHDAY PROJECT • BUILD 1.0</footer>
+</body>
+</html>
